@@ -1,22 +1,27 @@
 
 
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+# Initialise environment variables
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-olc_l4v9uimldmd)xjf0qcgbl#f3zyln(b##@b26_&2q_oo@_d'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 #ALLOWED_HOSTS = ['mywebsite.com', 'www.mywebsite.com', 'localhost', '127.0.0.1', '*']
 
@@ -181,8 +186,8 @@ EMAIL_USE_TLS = 'True'
 
 # Be sure to read the guide in the resources folder of this lecture (SETUP THE EMAIL BACKEND)
 
-EMAIL_HOST_USER = 'ramakrishna.ganja100@gmail.com' # - Enter your GMAIL address # The host email that sends password reset emails
-EMAIL_HOST_PASSWORD = 'hkymkackcbnrznnr' # - Enter your app password 
+EMAIL_HOST_USER = env('EMAIL_HOST_USER'), # - Enter your GMAIL address # The host email that sends password reset emails
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD') # - Enter your app password 
 
 
 # AWS credentials:
