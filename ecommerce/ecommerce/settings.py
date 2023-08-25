@@ -116,12 +116,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}'''
 
 
 # Password validation
@@ -191,13 +191,13 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD') # - Enter your app password
 
 
 # AWS credentials:
-'''
-AWS_ACCESS_KEY_ID = "" # Access Key ID 
-AWS_SECRET_ACCESS_KEY = "" # Secret Access Key ID
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID') # Access Key ID 
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY') # Secret Access Key ID
+
 
 # S3 configuration settings:
 
-AWS_STORAGE_BUCKET_NAME = '' 
+AWS_STORAGE_BUCKET_NAME = 'ganja-ecommerce' 
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -205,30 +205,28 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 AWS_S3_FILE_OVERWRITE = False
-'''
 
 
 # Admin styling adjustment
 
-#ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 
 # RDS (Database) configuration settings:
 
-'''
 DATABASES = {
 
     'default': {
 
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': '',
+        'NAME': 'demo_1',
 
-        'USER': '',
+        'USER': 'postgres',
 
-        'PASSWORD': '',
+        'PASSWORD': 'ajay1234',
 
-        'HOST': '',
+        'HOST': 'database-1.clbeenut3sww.ap-south-1.rds.amazonaws.com',
 
         'PORT': '5432',
 
@@ -236,7 +234,6 @@ DATABASES = {
     }
 
 }
-'''
 
 
 
