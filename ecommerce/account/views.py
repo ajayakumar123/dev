@@ -26,6 +26,8 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
+import pdb
+
 
 
 
@@ -45,23 +47,26 @@ def register(request):
             user.is_active = False
 
             user.save()
+            print("11111111111",user)
 
             # Email verification setup (template)
 
-            current_site = get_current_site(request)
+            # current_site = get_current_site(request)
 
-            subject = 'Account verification email'
-
-            message = render_to_string('account/registration/email-verification.html', {
+            # subject = 'Account verification email'
+            # print("2222222222222",user.pk)
+            # print("22222aaaa",type(user.pk))
+            # message = render_to_string('account/registration/email-verification.html', {
             
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': user_tokenizer_generate.make_token(user),
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': user.pk,
+            #     'token': user_tokenizer_generate.make_token(user),
             
-            })
-
-            user.email_user(subject=subject, message=message)
+            # })
+            # print("33333333333333")
+            # user.email_user(subject=subject, message=message)
+            # print("444444444444444")
 
 
             return redirect('email-verification-sent')
